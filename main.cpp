@@ -13,11 +13,11 @@ class Animal {
     Animal(string sp, string dt, int ag, double hl) : species(sp), diet(dt), age(ag), health(hl) {};
 
     void displayDetails() {
-        cout<<"Species: "<<species<<" Diet: "<<diet<<" Age: "<<age<<" Health: "<<health<<endl; 
+        cout<<"Species: "<< species <<" Diet: "<< diet <<" Age: "<< age <<" Health: "<< health << endl; 
     }
 
     void behave() {
-        cout<<species<<" is behaving according to its nature."<<endl;
+        cout<<species<<" is behaving according to its nature."<< endl;
     }
 };
 
@@ -31,11 +31,11 @@ class Plant {
     Plant(string sp, int ag, int hl) : species(sp), age(ag), health(hl) {};
 
     void displayDetails() {
-        cout<<"Species: "<< species <<" Age: "<< age <<" Health: "<< health <<endl;
+        cout<<"Species: "<< species <<" Age: "<< age <<" Health: "<< health << endl;
     }
 
     void grow() {
-        cout<<species<<" is growing according to its nature."<<endl;
+        cout<<species<<" is growing according to its nature."<< endl;
     }
 
 };
