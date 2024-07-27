@@ -3,45 +3,59 @@
 using namespace std;
 
 class Animal {
-    private:
+private:
     string species;
     string diet;
     int age;
     double health;
 
-    public:
-    Animal(string sp, string dt, int ag, double hl) : species(sp), diet(dt), age(ag), health(hl) {};
-
-    void displayDetails() {
-        cout<<"Species: "<< species <<" Diet: "<< diet <<" Age: "<< age <<" Health: "<< health << endl; 
+public:
+    // Constructor
+    Animal(string species, string diet, int age, double health) {
+        this->species = species;
+        this->diet = diet;
+        this->age = age;
+        this->health = health;
     }
 
+    // Member function to display animal details
+    void displayDetails() {
+        cout << "Species: " << this->species << ", Diet: " << this->diet << ", Age: " << this->age << ", Health: " << this->health << endl;
+    }
+
+    // Member function to simulate animal behavior
     void behave() {
-        cout<<species<<" is behaving according to its nature."<< endl;
+        cout << this->species << " is behaving according to its nature." << endl;
     }
 };
 
 class Plant {
-    private:
+private:
     string species;
     int age;
-    int health;
+    double health;
 
-    public:
-    Plant(string sp, int ag, int hl) : species(sp), age(ag), health(hl) {};
+public:
+    // Constructor
+    Plant(string species, int age, double health) {
+        this->species = species;
+        this->age = age;
+        this->health = health;
+    }
 
+    // Member function to display plant details
     void displayDetails() {
-        cout<<"Species: "<< species <<" Age: "<< age <<" Health: "<< health << endl;
+        cout << "Species: " << this->species << ", Age: " << this->age << ", Health: " << this->health << endl;
     }
 
+    // Member function to simulate plant growth
     void grow() {
-        cout<<species<<" is growing according to its nature."<< endl;
+        cout << this->species << " is growing." << endl;
     }
-
 };
 
-
-int main(){
+int main() {
+    // Creating objects for Animal and Plant
     Animal deer("Deer", "Herbivore", 3, 100.0);
     deer.displayDetails();
     deer.behave();
