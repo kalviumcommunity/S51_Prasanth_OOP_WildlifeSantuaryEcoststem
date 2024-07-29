@@ -10,7 +10,6 @@ private:
     double health;
 
 public:
-    // Constructor
     Animal(string species, string diet, int age, double health) {
         this->species = species;
         this->diet = diet;
@@ -18,12 +17,10 @@ public:
         this->health = health;
     }
 
-    // Member function to display animal details
     void displayDetails() {
         cout << "Species: " << this->species << ", Diet: " << this->diet << ", Age: " << this->age << ", Health: " << this->health << endl;
     }
 
-    // Member function to simulate animal behavior
     void behave() {
         cout << this->species << " is behaving according to its nature." << endl;
     }
@@ -36,33 +33,42 @@ private:
     double health;
 
 public:
-    // Constructor
     Plant(string species, int age, double health) {
         this->species = species;
         this->age = age;
         this->health = health;
     }
 
-    // Member function to display plant details
     void displayDetails() {
         cout << "Species: " << this->species << ", Age: " << this->age << ", Health: " << this->health << endl;
     }
 
-    // Member function to simulate plant growth
     void grow() {
         cout << this->species << " is growing." << endl;
     }
 };
 
 int main() {
-    // Creating objects for Animal and Plant
-    Animal deer("Deer", "Herbivore", 3, 100.0);
-    deer.displayDetails();
-    deer.behave();
 
-    Plant oakTree("Oak Tree", 10, 95.0);
-    oakTree.displayDetails();
-    oakTree.grow();
+    Animal animals[] = {
+        Animal("Deer", "Herbivore", 3, 100.0),
+        Animal("Lion", "Carnivore", 5, 95.0),
+        Animal("Elephant", "Herbivore", 10, 85.0)};
+
+    for (int i = 0; i < 3; i++) {
+        animals[i].displayDetails();
+        animals[i].behave();
+    }
+
+    Plant plants[] = {
+        Plant("Oak Tree", 10, 95.0),
+        Plant("Pine Tree", 15, 90.0),
+        Plant("Bush", 5, 80.0)};
+
+    for (int i = 0; i < 3; i++) {
+        plants[i].displayDetails();
+        plants[i].grow();
+    }
 
     return 0;
 }
