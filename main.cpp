@@ -8,6 +8,7 @@ private:
     string diet;
     int age;
     double health;
+    static int animalCount;
 
 public:
     Animal(string species, string diet, int age, double health) {
@@ -15,6 +16,11 @@ public:
         this->diet = diet;
         this->age = age;
         this->health = health;
+        animalCount++;
+    }
+
+    static int getAnimalCount() {
+        return animalCount;
     }
 
     void displayDetails() {
@@ -26,17 +32,25 @@ public:
     }
 };
 
+int Animal::animalCount = 0; 
+
 class Plant {
 private:
     string species;
     int age;
     double health;
+    static int plantCount;
 
 public:
     Plant(string species, int age, double health) {
         this->species = species;
         this->age = age;
         this->health = health;
+        plantCount++;
+    }
+
+    static int getPlantCount() { 
+        return plantCount;
     }
 
     void displayDetails() {
@@ -47,6 +61,8 @@ public:
         cout << species << " is growing." << endl;
     }
 };
+
+int Plant::plantCount = 0;
 
 int main() {
     Animal* animal1 = new Animal("Deer", "Herbivore", 3, 100.0);
@@ -74,6 +90,9 @@ int main() {
 
     plant3->displayDetails();
     plant3->grow();
+
+    cout << "Total number of animals: " << Animal::getAnimalCount() << endl;
+    cout << "Total number of plants: " << Plant::getPlantCount() << endl;
 
     delete animal1;
     delete animal2;
