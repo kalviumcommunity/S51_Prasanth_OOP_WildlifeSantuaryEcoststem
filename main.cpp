@@ -2,7 +2,8 @@
 #include <string>
 using namespace std;
 
-class Animal {
+class Animal
+{
 private:
     string species;
     string diet;
@@ -11,7 +12,8 @@ private:
     static int animalCount;
 
 public:
-    Animal(string species, string diet, int age, double health) {
+    Animal(string species, string diet, int age, double health)
+    {
         this->species = species;
         this->diet = diet;
         this->age = age;
@@ -19,22 +21,26 @@ public:
         animalCount++;
     }
 
-    static int getAnimalCount() {
+    static int getAnimalCount()
+    {
         return animalCount;
     }
 
-    void displayDetails() {
+    void displayDetails()
+    {
         cout << "Species: " << species << ", Diet: " << diet << ", Age: " << age << ", Health: " << health << endl;
     }
 
-    void behave() {
+    void behave()
+    {
         cout << species << " is behaving according to its nature." << endl;
     }
 };
 
-int Animal::animalCount = 0; 
+int Animal::animalCount = 0;
 
-class Plant {
+class Plant
+{
 private:
     string species;
     int age;
@@ -42,32 +48,37 @@ private:
     static int plantCount;
 
 public:
-    Plant(string species, int age, double health) {
+    Plant(string species, int age, double health)
+    {
         this->species = species;
         this->age = age;
         this->health = health;
         plantCount++;
     }
 
-    static int getPlantCount() { 
+    static int getPlantCount()
+    {
         return plantCount;
     }
 
-    void displayDetails() {
+    void displayDetails()
+    {
         cout << "Species: " << species << ", Age: " << age << ", Health: " << health << endl;
     }
 
-    void grow() {
+    void grow()
+    {
         cout << species << " is growing." << endl;
     }
 };
 
 int Plant::plantCount = 0;
 
-int main() {
-    Animal* animal1 = new Animal("Deer", "Herbivore", 3, 100.0);
-    Animal* animal2 = new Animal("Lion", "Carnivore", 5, 95.0);
-    Animal* animal3 = new Animal("Elephant", "Herbivore", 10, 85.0);
+int main()
+{
+    Animal *animal1 = new Animal("Deer", "Herbivore", 3, 100.0);
+    Animal *animal2 = new Animal("Lion", "Carnivore", 5, 95.0);
+    Animal *animal3 = new Animal("Elephant", "Herbivore", 10, 85.0);
 
     animal1->displayDetails();
     animal1->behave();
@@ -78,9 +89,9 @@ int main() {
     animal3->displayDetails();
     animal3->behave();
 
-    Plant* plant1 = new Plant("Oak Tree", 10, 95.0);
-    Plant* plant2 = new Plant("Pine Tree", 15, 90.0);
-    Plant* plant3 = new Plant("Bush", 5, 80.0);
+    Plant *plant1 = new Plant("Oak Tree", 10, 95.0);
+    Plant *plant2 = new Plant("Pine Tree", 15, 90.0);
+    Plant *plant3 = new Plant("Bush", 5, 80.0);
 
     plant1->displayDetails();
     plant1->grow();
