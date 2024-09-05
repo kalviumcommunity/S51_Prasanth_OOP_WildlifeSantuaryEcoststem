@@ -2,116 +2,81 @@
 #include <string>
 using namespace std;
 
-class Animal
-{
+class Animal {
 private:
-    string species;
-    string diet;
+    string name;
     int age;
-    double health;
-    static int animalCount;
+    string type;
 
 public:
-    Animal(string species, string diet, int age, double health)
-    {
-        this->species = species;
-        this->diet = diet;
-        this->age = age;
-        this->health = health;
-        animalCount++;
+    Animal(string n, int a, string t) : name(n), age(a), type(t) {}
+
+    string getName() const {
+        return name;
     }
 
-    static int getAnimalCount()
-    {
-        return animalCount;
+    void setName(string newName) {
+        name = newName;
     }
 
-    void displayDetails()
-    {
-        cout << "Species: " << species << ", Diet: " << diet << ", Age: " << age << ", Health: " << health << endl;
+    int getAge() const {
+        return age;
     }
 
-    void behave()
-    {
-        cout << species << " is behaving according to its nature." << endl;
+    void setAge(int newAge) {
+        if (newAge > 0) {
+            age = newAge;
+        }
+    }
+
+    void displayDetails() const {
+        cout << "Animal: " << name << ", Age: " << age << ", Type: " << type << endl;
     }
 };
 
-int Animal::animalCount = 0;
-
-class Plant
-{
+class Plant {
 private:
     string species;
-    int age;
-    double health;
-    static int plantCount;
+    double height;
 
 public:
-    Plant(string species, int age, double health)
-    {
-        this->species = species;
-        this->age = age;
-        this->health = health;
-        plantCount++;
+    Plant(string s, double h) : species(s), height(h) {}
+
+    string getSpecies() const {
+        return species;
     }
 
-    static int getPlantCount()
-    {
-        return plantCount;
+    void setSpecies(string newSpecies) {
+        species = newSpecies;
     }
 
-    void displayDetails()
-    {
-        cout << "Species: " << species << ", Age: " << age << ", Health: " << health << endl;
+    double getHeight() const {
+        return height;
     }
 
-    void grow()
-    {
-        cout << species << " is growing." << endl;
+    void setHeight(double newHeight) {
+        if (newHeight > 0) {
+            height = newHeight;
+        }
+    }
+
+    void displayDetails() const {
+        cout << "Plant: " << species << ", Height: " << height << " meters" << endl;
     }
 };
 
-int Plant::plantCount = 0;
+int main() {
+    Animal lion("Lion", 5, "Carnivore");
+    lion.displayDetails();
 
-int main()
-{
-    Animal *animal1 = new Animal("Deer", "Herbivore", 3, 100.0);
-    Animal *animal2 = new Animal("Lion", "Carnivore", 5, 95.0);
-    Animal *animal3 = new Animal("Elephant", "Herbivore", 10, 85.0);
+    lion.setAge(6);
+    lion.displayDetails();
 
-    animal1->displayDetails();
-    animal1->behave();
+    Plant oakTree("Oak Tree", 15.0);
+    oakTree.displayDetails();
 
-    animal2->displayDetails();
-    animal2->behave();
-
-    animal3->displayDetails();
-    animal3->behave();
-
-    Plant *plant1 = new Plant("Oak Tree", 10, 95.0);
-    Plant *plant2 = new Plant("Pine Tree", 15, 90.0);
-    Plant *plant3 = new Plant("Bush", 5, 80.0);
-
-    plant1->displayDetails();
-    plant1->grow();
-
-    plant2->displayDetails();
-    plant2->grow();
-
-    plant3->displayDetails();
-    plant3->grow();
-
-    cout << "Total number of animals: " << Animal::getAnimalCount() << endl;
-    cout << "Total number of plants: " << Plant::getPlantCount() << endl;
-
-    delete animal1;
-    delete animal2;
-    delete animal3;
-
-    delete plant1;
-    delete plant2;
-    delete plant3;
+    oakTree.setHeight(16.0);
+    oakTree.displayDetails();
 
     return 0;
 }
