@@ -2,39 +2,35 @@
 #include <string>
 using namespace std;
 
-class Animal {
+class Animal
+{
 private:
     string name;
     int age;
-    string type;
 
 public:
-    Animal(string n, int a, string t) : name(n), age(a), type(t) {}
+    Animal(string n, int a) : name(n), age(a) {}
 
-    string getName() const {
-        return name;
+    void displayAnimalInfo() const
+    {
+        cout << "Animal: " << name << ", Age: " << age << endl;
     }
 
-    void setName(string newName) {
-        name = newName;
+    void growOlder()
+    {
+        age += 1;
+        cout << name << " is now older, age: " << age << endl;
     }
 
-    int getAge() const {
-        return age;
-    }
-
-    void setAge(int newAge) {
-        if (newAge > 0) {
-            age = newAge;
-        }
-    }
-
-    void displayDetails() const {
-        cout << "Animal: " << name << ", Age: " << age << ", Type: " << type << endl;
+private:
+    void ageIncrement()
+    {
+        age++;
     }
 };
 
-class Plant {
+class Plant
+{
 private:
     string species;
     double height;
@@ -42,41 +38,33 @@ private:
 public:
     Plant(string s, double h) : species(s), height(h) {}
 
-    string getSpecies() const {
-        return species;
-    }
-
-    void setSpecies(string newSpecies) {
-        species = newSpecies;
-    }
-
-    double getHeight() const {
-        return height;
-    }
-
-    void setHeight(double newHeight) {
-        if (newHeight > 0) {
-            height = newHeight;
-        }
-    }
-
-    void displayDetails() const {
+    void displayPlantInfo() const
+    {
         cout << "Plant: " << species << ", Height: " << height << " meters" << endl;
+    }
+
+    void grow(double additionalHeight)
+    {
+        height += additionalHeight;
+        cout << species << " has grown to " << height << " meters." << endl;
+    }
+
+private:
+    void increaseHeight(double h)
+    {
+        height += h;
     }
 };
 
-int main() {
-    Animal lion("Lion", 5, "Carnivore");
-    lion.displayDetails();
+int main()
+{
+    Animal tiger("Tiger", 4);
+    tiger.displayAnimalInfo();
+    tiger.growOlder();
 
-    lion.setAge(6);
-    lion.displayDetails();
-
-    Plant oakTree("Oak Tree", 15.0);
-    oakTree.displayDetails();
-
-    oakTree.setHeight(16.0);
-    oakTree.displayDetails();
+    Plant fern("Fern", 0.5);
+    fern.displayPlantInfo();
+    fern.grow(0.3);
 
     return 0;
 }
