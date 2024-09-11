@@ -2,69 +2,74 @@
 #include <string>
 using namespace std;
 
-class Animal
-{
+class Animal {
 private:
     string name;
     int age;
 
 public:
-    Animal(string n, int a) : name(n), age(a) {}
+    Animal() {
+        name = "Unknown";
+        age = 0;
+        cout << "Default constructor called" << endl;
+    }
 
-    void displayAnimalInfo() const
-    {
+    Animal(string n, int a) {
+        name = n;
+        age = a;
+        cout << "Parameterized constructor called" << endl;
+    }
+
+    Animal(const Animal &obj) {
+        name = obj.name;
+        age = obj.age;
+        cout << "Copy constructor called" << endl;
+    }
+
+    ~Animal() {
+        cout << "Destructor called for Animal: " << name << endl;
+    }
+
+    void displayAnimalInfo() const {
         cout << "Animal: " << name << ", Age: " << age << endl;
-    }
-
-    void growOlder()
-    {
-        age += 1;
-        cout << name << " is now older, age: " << age << endl;
-    }
-
-private:
-    void ageIncrement()
-    {
-        age++;
     }
 };
 
-class Plant
-{
+class Plant {
 private:
     string species;
     double height;
 
 public:
-    Plant(string s, double h) : species(s), height(h) {}
+    Plant() : species("Unknown"), height(0.0) {
+        cout << "Default constructor called for Plant" << endl;
+    }
 
-    void displayPlantInfo() const
-    {
+    Plant(string s, double h) : species(s), height(h) {
+        cout << "Parameterized constructor called for Plant" << endl;
+    }
+
+    ~Plant() {
+        cout << "Destructor called for Plant: " << species << endl;
+    }
+
+    void displayPlantInfo() const {
         cout << "Plant: " << species << ", Height: " << height << " meters" << endl;
-    }
-
-    void grow(double additionalHeight)
-    {
-        height += additionalHeight;
-        cout << species << " has grown to " << height << " meters." << endl;
-    }
-
-private:
-    void increaseHeight(double h)
-    {
-        height += h;
     }
 };
 
-int main()
-{
-    Animal tiger("Tiger", 4);
-    tiger.displayAnimalInfo();
-    tiger.growOlder();
+int main() {
+    Animal animal1;
+    animal1.displayAnimalInfo();
 
-    Plant fern("Fern", 0.5);
-    fern.displayPlantInfo();
-    fern.grow(0.3);
+    Animal animal2("Lion", 5);
+    animal2.displayAnimalInfo();
+
+    Animal animal3 = animal2;
+    animal3.displayAnimalInfo();
+
+    Plant plant1("Rose", 0.5);
+    plant1.displayPlantInfo();
 
     return 0;
 }
