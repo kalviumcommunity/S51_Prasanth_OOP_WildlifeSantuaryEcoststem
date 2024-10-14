@@ -2,74 +2,90 @@
 #include <string>
 using namespace std;
 
-class Animal {
-private:
+// Base class: LivingBeing
+class LivingBeing {
+protected:
     string name;
     int age;
 
 public:
-    Animal() {
-        name = "Unknown";
-        age = 0;
-        cout << "Default constructor called" << endl;
+    LivingBeing(string n = "Unknown", int a = 0) : name(n), age(a) {
+        cout << "LivingBeing constructor called" << endl;
     }
 
-    Animal(string n, int a) {
-        name = n;
-        age = a;
-        cout << "Parameterized constructor called" << endl;
+    virtual void displayInfo() const {
+        cout << "LivingBeing: " << name << ", Age: " << age << endl;
     }
 
-    Animal(const Animal &obj) {
-        name = obj.name;
-        age = obj.age;
-        cout << "Copy constructor called" << endl;
-    }
-
-    ~Animal() {
-        cout << "Destructor called for Animal: " << name << endl;
-    }
-
-    void displayAnimalInfo() const {
-        cout << "Animal: " << name << ", Age: " << age << endl;
+    virtual ~LivingBeing() {
+        cout << "LivingBeing destructor called for: " << name << endl;
     }
 };
 
-class Plant {
+// Derived class: Animal (Single Inheritance)
+class Animal : public LivingBeing {
+public:
+    Animal(string n = "Unknown", int a = 0) : LivingBeing(n, a) {
+        cout << "Animal constructor called" << endl;
+    }
+
+    void displayInfo() const override {
+        cout << "Animal: " << name << ", Age: " << age << endl;
+    }
+
+    ~Animal() {
+        cout << "Animal destructor called for: " << name << endl;
+    }
+};
+
+// Derived class: Plant (Single Inheritance)
+class Plant : public LivingBeing {
 private:
-    string species;
     double height;
 
 public:
-    Plant() : species("Unknown"), height(0.0) {
-        cout << "Default constructor called for Plant" << endl;
+    Plant(string s = "Unknown", double h = 0.0) : LivingBeing(s), height(h) {
+        cout << "Plant constructor called" << endl;
     }
 
-    Plant(string s, double h) : species(s), height(h) {
-        cout << "Parameterized constructor called for Plant" << endl;
+    void displayInfo() const override {
+        cout << "Plant: " << name << ", Height: " << height << " meters" << endl;
     }
 
     ~Plant() {
-        cout << "Destructor called for Plant: " << species << endl;
+        cout << "Plant destructor called for: " << name << endl;
+    }
+};
+
+// Multi-level Inheritance: CarnivorousPlant derived from Plant
+class CarnivorousPlant : public Plant {
+private:
+    string type;
+
+public:
+    CarnivorousPlant(string s, double h, string t) : Plant(s, h), type(t) {
+        cout << "CarnivorousPlant constructor called" << endl;
     }
 
-    void displayPlantInfo() const {
-        cout << "Plant: " << species << ", Height: " << height << " meters" << endl;
+    void displayInfo() const override {
+        Plant::displayInfo();
+        cout << "Type: " << type << endl;
+    }
+
+    ~CarnivorousPlant() {
+        cout << "CarnivorousPlant destructor called for: " << name << endl;
     }
 };
 
 int main() {
-    Animal animal1;
-    animal1.displayAnimalInfo();
+    Animal animal("Lion", 5);
+    animal.displayInfo();
 
-    Animal animal2("Lion", 5);
-    animal2.displayAnimalInfo();
+    Plant plant("Rose", 0.5);
+    plant.displayInfo();
 
-    Animal animal3 = animal2;
-    animal3.displayAnimalInfo();
-
-    Plant plant1("Rose", 0.5);
-    plant1.displayPlantInfo();
+    CarnivorousPlant venusFlyTrap("Venus Flytrap", 0.3, "Carnivorous");
+    venusFlyTrap.displayInfo();
 
     return 0;
 }
