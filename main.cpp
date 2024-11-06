@@ -15,6 +15,7 @@ public:
 class Animal : public LivingBeing {
 public:
     Animal(string n = "Unknown") : LivingBeing(n) {}
+
     void displayInfo() const override {
         cout << "Animal: " << name << endl;
     }
@@ -23,8 +24,18 @@ public:
 class Plant : public LivingBeing {
 public:
     Plant(string n = "Unknown") : LivingBeing(n) {}
+
     void displayInfo() const override {
         cout << "Plant: " << name << endl;
+    }
+};
+
+class Bird : public LivingBeing {
+public:
+    Bird(string n = "Unknown") : LivingBeing(n) {}
+
+    void displayInfo() const override {
+        cout << "Bird: " << name << endl;
     }
 };
 
@@ -32,12 +43,15 @@ public:
 int main() {
     LivingBeing* being1 = new Animal("Tiger");
     LivingBeing* being2 = new Plant("Fern");
+    LivingBeing* being3 = new Bird("Eagle");
 
     being1->displayInfo();
     being2->displayInfo();
+    being3->displayInfo();
 
     delete being1;
     delete being2;
+    delete being3;
 
     return 0;
 }
