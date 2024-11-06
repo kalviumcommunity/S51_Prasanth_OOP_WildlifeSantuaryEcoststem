@@ -39,19 +39,20 @@ public:
     }
 };
 
-// Main program
 int main() {
-    LivingBeing* being1 = new Animal("Tiger");
-    LivingBeing* being2 = new Plant("Fern");
-    LivingBeing* being3 = new Bird("Eagle");
+    LivingBeing* beings[] = {
+        new Animal("Tiger"),
+        new Plant("Fern"),
+        new Bird("Eagle")
+    };
 
-    being1->displayInfo();
-    being2->displayInfo();
-    being3->displayInfo();
+    for (int i = 0; i < 3; ++i) {
+        beings[i]->displayInfo();
+    }
 
-    delete being1;
-    delete being2;
-    delete being3;
+    for (int i = 0; i < 3; ++i) {
+        delete beings[i];
+    }
 
     return 0;
 }
